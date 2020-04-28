@@ -1,0 +1,25 @@
+<p>myc01 works!</p>
+
+<div style="width: 400px;">
+  <div style=" height: 200px;border: 1px solid red; ">
+    <div>公司名称:{{ data[curP - 1].name }}</div>
+    <div>公司网址: {{ data[curP - 1].url | lowercase }}</div>
+    <div>公司简介:{{ data[curP - 1].desc.slice(0, 30) }}...</div>
+    <div>公司价值:{{ data[curP - 1].price | currency: "¥" }}</div>
+    <div>公司等级:{{ data[curP - 1].level | level }}</div>
+    <div>创建时间:{{ data[curP - 1].created | date: "yyyy-MM-dd" }}</div>
+    <div>英文名:{{ data[curP - 1].ename | uppercase }}</div>
+  </div>
+  <div style="text-align: center;">
+    <span (click)="doPrev()" *ngIf="curP > 1">上一页</span>
+    <!-- 页数 与 数组中数据数量有关 -->
+    <span
+      (click)="doCheck(i)"
+      [ngClass]="{ cur: i == curP - 1 }"
+      *ngFor="let item of data; let i = index"
+    >
+      {{ i + 1 }}
+    </span>
+    <span (click)="doNext()" *ngIf="curP < data.length">下一页</span>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<p>myc02 works!</p>
+
+<ul>
+  <li *ngFor="let name of names; let i = index">
+    {{ name }} <button (click)="doDel(i)">删除</button>
+  </li>
+</ul>
